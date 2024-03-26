@@ -1,130 +1,114 @@
 # Help Desk Ticketing System
 
 # Start Date 25/03/2024
+
 # Author Glen Radovan 20240837
+
 # Completed date
 
-# Here I have defined a class named Ticket that will encapsulate all the ticket-related functionalities.
 
 class Ticket:
     counter = 0
 
-    def __init__(self, staff_id, creator_name, contact_email, description):
-        Ticket.counter += 1  # this increments the count by one when a new ticket is created
-        self.ticket_number = Ticket.counter + 2000 # this starts the count at 2000
-        self.staff_id = staff_id
-        self.creator_name = creator_name
-        self.contact_email = contact_email
+    def __init__(self, team_member_name, team_member_login, customer_name, email_address, login_code, password,
+                 description):
+        Ticket.counter += 1
+        self.ticket_number = Ticket.counter + 2000
+        self.team_member_name = team_member_name
+        self.team_member_login = team_member_login
+        self.customer_name = customer_name
+        self.email_address = email_address
+        self.login_code = login_code
+        self.password = password
         self.description = description
-        self.response = "Not Yet Provided"
-        self.status = "Open"
-
-# This next method (resolve_password_change) is used to handle password change requests for tickets
-# If the description of the ticket contains "Password Change",  it generates a new password using
-# the first two characters of the staff ID, concatenated with the first three characters of the
-# creator's name
-
-# I have used an f-string (which is a way to format strings), you can embed expressions inside curly
-# braces {}, and they will be replaced with their values when the string is evaluated. This allows
-# for easy interpolation of variables and expressions into strings. It's a concise and readable way
-# to construct strings with dynamic content.
-
-def resolve_password_change(self):
-    if "password change" in self.description.lower():
-        # Assuming contact_email contains the customer's email
-        # Extracting the first part of the email as the basis for the new password
-        customer_name = self.contact_email.split('@')[0]
-        new_password = customer_name[:2].lower() + str(self.ticket_number)  # Generating new password
-        self.response = f"New password generated: {new_password}"
-        self.status = "Closed"
-
-# In the next methods, respond() allows for updating the response of a ticket, while reopen() allows
-# for reopening a closed ticket by changing its status to "Reopened"
-
-    def respond(self, response):
-        self.response = response
-
-    def reopen(self):
-        self.status = "Reopened"
-
-    # The next method(print_ticket_info), is responsible for printing out all the information related to a ticket in a
-    # structured format.
+        self.solution_description = None
+        self.issue_rectified = False
 
     def print_ticket_info(self):
+        print("Ticket Details:")
         print(f"Ticket Number: {self.ticket_number}")
-        print(f"Ticket Creator: {self.creator_name}")
-        print(f"Staff ID: {self.staff_id}")
-        print(f"Email Address: {self.contact_email}")
+        print(f"Team Member Name: {self.team_member_name}")
+        print(f"Customer Name: {self.customer_name}")
+        print(f"Email Address: {self.email_address}")
+        print(f"Login Code: {self.login_code}")
+        print(f"Password: {self.password}")
         print(f"Description: {self.description}")
-        print(f"Response: {self.response}")
-        print(f"Ticket Status: {self.status}")
+        if self.solution_description:
+            print(f"Solution Description: {self.solution_description}")
 
-# The next method is defined as a static method(ticket_stats), within the Ticket class. It's purpose
-# is to calculate ticket statistics, like how many have been created, resolved, and any open tickets,
-# then returns a tuple containing the counts of created, resolved, and open tickets.
+        # Display "Issue Rectified" only if the issue has been rectified
+        if self.issue_rectified:
+            print(f"Issue Rectified: {'Yes' if self.issue_rectified else 'No'}")
 
-@staticmethod
-def ticket_stats(tickets):
-    created = len(tickets)
-    resolved = sum(1 for ticket in tickets if ticket.status == "Closed")
-    open_tickets = created - resolved
-    return created, resolved, open_tickets
+    def resolve_password_change(self):
+        if "password change" in self.description.lower():
+            self.login_code = self.customer_name[:3] + str(self.ticket_number)[-2:].zfill(2)
+            self.password = self.login_code
 
-# here I have defined the Main class, in this method you will interact with the ticketing system.
+    def provide_solution(self, solution_description):
+        self.solution_description = solution_description
+
+    def rectify_issue(self):
+        self.issue_rectified = True
+
+
 class Main:
     @staticmethod
     def main():
         tickets = []
-# The [] square brackets in this line create a new list object with no elements in it, so later in
-# the code, this list can be used to store info of the Ticket class:
 
-        #This piece prompts the user to create a ticket
         while True:
-            create_more = input("Do you want to create a new ticket? (yes/no):")
-            if create_more.lower() != "yes":  #this "lower()" ensures however the user types Yes, yEs,
-                                             # or YES, it is converted to lowercase and remains case
-                                             # sensitive"
-                break
-            new_ticket = Main.create_ticket_from_input()
-            tickets.append(new_ticket)
-        for ticket in tickets:
-            ticket.resolve_password_change()
+            team_member_name = input("Team member name: ").capitalize()
+            team_member_login = input("Team member login: ").lower()
+            search_option = input("Search? (yes/no): ").lower()
 
-        Main.display_ticket_statistics(tickets)    #change statistics to Info?
+            if search_option == "yes":
+                ticket_number_input = input("Enter ticket number to reopen: ")
+                if ticket_number_input:
+                    ticket_number = int(ticket_number_input)
+                    found_ticket = None
+                    for ticket in tickets:
+                        if ticket.ticket_number == ticket_number:
+                            found_ticket = ticket
+                            break
+                    if found_ticket:
+                        found_ticket.print_ticket_info()
+                    else:
+                        print("Ticket not found.")
+                    continue
+                else:
+                    print("Ticket number cannot be empty.")
+                    continue
 
-        # Reopen one ticket and respond to another
-        if tickets:  # Ensure there are tickets before performing actions
-            tickets[0].reopen()  # Reopen the first ticket
-            if len(tickets) > 1:
-                tickets[1].respond("The monitor has been replaced.")
+            customer_name = input("Customer name: ").capitalize()
+            email_address = input("Email address: ")
+            login_code = input("Login code: ")
+            if not login_code:
+                login_code = customer_name[:3] + "00"
+            password = input("Password: ")
+            if not password:
+                password = login_code
+            description = input("Enter description of the issue: ")
 
-        #display updated ticket info
-        Main.display_ticket_statistics(tickets)
-        Main.print_tickets(tickets)
+            new_ticket = Ticket(team_member_name, team_member_login, customer_name, email_address, login_code,
+                                password, description)
+            new_ticket.resolve_password_change()
 
-    @staticmethod
-    def create_ticket_from_input():
-        staff_id = input("Enter staff ID: ")
-        creator_name = input("Enter ticket creator name: ")
-        contact_email = input("Enter contact email: ")
-        description = input("Enter description of the issue: ")
-        return Ticket(staff_id, creator_name, contact_email, description)
+            new_ticket.print_ticket_info()
 
-    @staticmethod
-    def display_ticket_statistics(tickets):
-        created, resolved, open_tickets = Ticket.ticket_stats(tickets)
-        print("\nDisplaying Ticket Statistics\n")
-        print(f"Tickets Created: {created}")
-        print(f"Tickets Resolved: {resolved}")
-        print(f"Tickets To Solve: {open_tickets}\n")
+            solution_description = input("Enter solution description: ")
+            new_ticket.provide_solution(solution_description)
 
-    @staticmethod
-    def print_tickets(tickets):
-        print("Printing Tickets:\n")
-        for ticket in tickets:
-            ticket.print_ticket_info()
-            print()
-
+            issue_rectified_input = input("Has the issue been rectified? (yes/no): ").lower()
+            if issue_rectified_input == "yes":
+                new_ticket.rectify_issue()
+                print("You have solved the customer's issue. Thank them for the opportunity to help them and "
+                      "complete the call.")
+                tickets.append(new_ticket)
+                continue  # Return to the start of the loop for new ticket creation
+            elif issue_rectified_input == "no":
+                print("Lets restart go back to the proposed solution?")
+                tickets.append(new_ticket)  # Add the new ticket to the list
 
 if __name__ == "__main__":
     Main.main()
