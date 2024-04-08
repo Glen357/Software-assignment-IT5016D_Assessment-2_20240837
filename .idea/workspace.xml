@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80b4f93d-7f88-4c13-9d08-ef140809e9a9" name="Changes" comment="operational" />
+    <list default="true" id="80b4f93d-7f88-4c13-9d08-ef140809e9a9" name="Changes" comment="Removed add new_contact_email, and second &quot;ticket reopened successfully&quot; statement from reopen_ticket declaration">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712536759966</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Removed add new_contact_email, and second &quot;ticket reopened successfully&quot; statement from reopen_ticket declaration">
+      <option name="closed" value="true" />
+      <created>1712536953479</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712536953479</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -183,7 +193,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Change_branch" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -197,6 +219,7 @@
     <MESSAGE value="Re start" />
     <MESSAGE value="Removed new_contact email + system would print 2 &quot;ticket reopened successfully&quot; messages, removed second one from initial declaration" />
     <MESSAGE value="operational" />
-    <option name="LAST_COMMIT_MESSAGE" value="operational" />
+    <MESSAGE value="Removed add new_contact_email, and second &quot;ticket reopened successfully&quot; statement from reopen_ticket declaration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed add new_contact_email, and second &quot;ticket reopened successfully&quot; statement from reopen_ticket declaration" />
   </component>
 </project>
