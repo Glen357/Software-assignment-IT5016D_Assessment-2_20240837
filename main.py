@@ -52,9 +52,7 @@ class Ticket:
         self.status = "Reopened"
         if new_description:
             self.description = new_description
-        if new_contact_email:
-            self.contact_email = new_contact_email
-        print("Ticket reopened successfully.")
+            
 
     def display_ticket_info(self):
         print("Ticket Information:")
@@ -100,8 +98,7 @@ def reopen_ticket():
             print("Ticket found:")
             ticket.display_ticket_info()
             new_description = input("Enter new description (leave empty to keep current): ")
-            new_contact_email = input("Enter new contact email (leave empty to keep current): ")
-            ticket.reopen_ticket(new_description, new_contact_email)
+
             print("Ticket reopened successfully.")
             return
     print("Ticket not found.")
