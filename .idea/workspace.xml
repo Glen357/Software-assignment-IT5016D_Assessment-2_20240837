@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80b4f93d-7f88-4c13-9d08-ef140809e9a9" name="Changes" comment="operational">
-      <change beforePath="$PROJECT_DIR$/.idea/Software_assignment_IT5016D_Assessment_2_20240837.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Software_assignment_IT5016D_Assessment_2_20240837.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="80b4f93d-7f88-4c13-9d08-ef140809e9a9" name="Changes" comment="operational" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,7 +156,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711598843742</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="operational">
+      <option name="closed" value="true" />
+      <created>1712536535407</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712536535407</updated>
+    </task>
+    <task id="LOCAL-00008" summary="operational">
+      <option name="closed" value="true" />
+      <created>1712536759966</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712536759966</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -184,6 +195,7 @@
     <MESSAGE value="Second Commit - Added to initial commit, worked out logic for ticket search" />
     <MESSAGE value="1st commit to change branch. more aligned with poject requirements - yet to update main/master branch" />
     <MESSAGE value="Re start" />
+    <MESSAGE value="Removed new_contact email + system would print 2 &quot;ticket reopened successfully&quot; messages, removed second one from initial declaration" />
     <MESSAGE value="operational" />
     <option name="LAST_COMMIT_MESSAGE" value="operational" />
   </component>
