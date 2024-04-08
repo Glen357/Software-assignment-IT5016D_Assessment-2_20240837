@@ -46,15 +46,16 @@ class Ticket:
             new_password = f"{self.staff_id[:2]}{self.creator_name[:3]}"
             # Set the response to include the new password
             self.response = f"New password generated: {new_password}"
+            self.status = "Closed"  # Added this to mark ticket as Closed after password is generated
             print("Password change resolved successfully.")
 
-    def reopen_ticket(self, new_description=None, new_contact_email=None):
-        self.status = "Reopened"
+    def reopen_ticket(self, new_description):
         if new_description:
             self.description = new_description
-        if new_contact_email:
-            self.contact_email = new_contact_email
-        print("Ticket reopened successfully.")
+            print("New description added successfully")
+        elif new_description == "Closed":
+            self.status = "Closed"
+            print("Ticket Closed")
 
     def display_ticket_info(self):
         print("Ticket Information:")
@@ -99,12 +100,17 @@ def reopen_ticket():
         if ticket.ticket_number == ticket_number:
             print("Ticket found:")
             ticket.display_ticket_info()
-            new_description = input("Enter new description (leave empty to keep current): ")
-            new_contact_email = input("Enter new contact email (leave empty to keep current): ")
-            ticket.reopen_ticket(new_description, new_contact_email)
+            new_description = input("Enter new description (leave empty to keep current, or type 'Closed', to Close "
+                                    "Ticket): ")
+
+            ticket.reopen_ticket(new_description)
+            if "Closed" in new_description:
+                ticket.status = "Closed"
+
             print("Ticket reopened successfully.")
+
             return
-    print("Ticket not found.")
+        print("Ticket not found.")
 
 
 def display_menu():
