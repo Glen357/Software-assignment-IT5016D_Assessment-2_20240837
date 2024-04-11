@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80b4f93d-7f88-4c13-9d08-ef140809e9a9" name="Changes" comment="Final Commit">
+    <list default="true" id="80b4f93d-7f88-4c13-9d08-ef140809e9a9" name="Changes" comment="Final Commit, with respond to ticket. Will need to update Readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -204,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712651274688</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Final Commit, with respond to ticket. Will need to update Readme">
+      <option name="closed" value="true" />
+      <created>1712863179381</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712863179381</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -243,6 +251,7 @@
     <MESSAGE value="operational" />
     <MESSAGE value="Fixed - Close ticket automatically after password generated, and when you type Closed in reopen_ticket ticket status is closed/resolved" />
     <MESSAGE value="Merge pull request #1 from Glen357/Change_branch&#10;&#10;Change branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge pull request #1 from Glen357/Change_branch&#10;&#10;Change branch" />
+    <MESSAGE value="Final Commit, with respond to ticket. Will need to update Readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Commit, with respond to ticket. Will need to update Readme" />
   </component>
 </project>
