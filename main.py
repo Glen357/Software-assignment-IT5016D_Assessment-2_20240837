@@ -5,7 +5,7 @@
 
 # Author Glen Radovan 20240837
 
-# Completed date 10/04/2024
+# Completed date 12/04/2024
 
 import itertools
 
@@ -35,8 +35,8 @@ class Ticket:
         print(f"Response: {self.response}")
         print(f"Status: {self.status}")
 
-    def respond_to_ticket(self, feedback):
-        self.response = feedback
+    def respond_to_ticket(self, new_response):
+        self.response = new_response
         print("Response added successfully.")
 
     def resolve_password_change(self):
@@ -93,6 +93,25 @@ def create_ticket():
         new_ticket.resolve_password_change()
 
 
+def respond_to_ticket():
+    # Function to respond to a ticket
+    ticket_number = int(input("Enter the ticket number to reopen: "))
+    for ticket in Ticket.all_tickets:
+        if ticket.ticket_number == ticket_number:
+            print("Ticket found:")
+            ticket.display_ticket_info()
+            new_response = input("Please add your response to a ticket): ")
+
+            ticket.respond_to_ticket(new_response)
+            if "Closed" in new_response:
+                ticket.status = "Closed"
+
+            # print("Ticket reopened successfully.")
+
+            return
+        print("Ticket not found.")
+
+
 def reopen_ticket():
     # Function to reopen a ticket
     ticket_number = int(input("Enter the ticket number to reopen: "))
@@ -117,8 +136,9 @@ def display_menu():
     print("\n===== Help Desk Ticketing System =====")
     print("1. Create a New Ticket")
     print("2. Reopen a Ticket")
-    print("3. Display Ticket Statistics")
-    print("4. Exit")
+    print("3. Respond to a Ticket")
+    print("4. Display Ticket Statistics")
+    print("5. Exit")
 
 
 # Example usage
@@ -131,8 +151,10 @@ while True:
     elif choice == "2":
         reopen_ticket()
     elif choice == "3":
-        Ticket.display_ticket_statistics(Ticket.all_tickets)
+        respond_to_ticket()
     elif choice == "4":
+        Ticket.display_ticket_statistics(Ticket.all_tickets)
+    elif choice == "5":
         print("Exiting the program. Goodbye!")
         break
     else:
